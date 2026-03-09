@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────
+   TABLET  ≤ 1100px
+───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .right-sidebar { display: none; }
+  .nav-pills { display: none; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .subjects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE  ≤ 768px
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* ── LAYOUT ─────────────────── */
+  :root {
+    --sidebar-w: 0px;
+    --nav-h: 56px;
+  }
+
+  .left-sidebar { display: none; }
+  .hamburger { display: flex !important; }
+  .nav-search { max-width: none; flex:1; }
+  .nav-pills { display: none; }
+  .nav-right { display: none; }
+
+  .page-shell {
+    margin-left: 0;
+    flex-direction: column;
+  }
+
+  .main-content { padding: 16px 14px 80px; }
+  .right-sidebar { display: none; }
+  .bottom-nav { display: flex; }
+
+  /* ── HERO ───────────────────── */
+  .hero-spotlight { height: 310px; border-radius: var(--radius); }
+  .hero-content { padding: 24px 22px 28px; max-width: 100%; }
+  .hero-title { font-size: 1.9rem; }
+  .hero-desc { font-size: 0.83rem; max-width: 100%; }
+  .hero-visual-icon { font-size: 6rem; right: 4%; opacity: 0.1; }
+
+  /* ── STATS ──────────────────── */
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stat-num { font-size: 1.65rem; }
+
+  /* ── CARDS ──────────────────── */
+  .subj-card { width: 132px; }
+  .sc-thumb { height: 78px; font-size: 2.2rem; }
+  .formula-scroll-card { width: 210px; }
+  .subjects-grid { grid-template-columns: repeat(2, 1fr); }
+  .formulas-grid { grid-template-columns: 1fr; }
+
+  /* ── CALCULATORS ────────────── */
+  .calc-grid { grid-template-columns: 1fr; }
+
+  /* ── CHAT ───────────────────── */
+  .chat-fab { bottom: 72px; right: 16px; width: 50px; height: 50px; }
+  .chat-panel {
+    bottom: 132px; right: 10px; left: 10px; width: auto;
+    height: calc(100vh - 180px); max-height: 520px;
+    border-radius: 16px;
+  }
+
+  /* ── SECTION HEADERS ────────── */
+  .section-hdr { margin-bottom: 12px; }
+  .sh-title { font-size: 0.95rem; }
+}
+
+/* ─────────────────────────────────────────────
+   SMALL MOBILE  ≤ 400px
+───────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .hero-title { font-size: 1.6rem; }
+  .hero-badge { font-size: 0.62rem; }
+  .hero-btns { flex-direction: column; }
+  .btn-hero { justify-content: center; }
+  .stat-num { font-size: 1.4rem; }
+  .subjects-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+}
