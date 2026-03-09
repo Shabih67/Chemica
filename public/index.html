@@ -45,11 +45,17 @@
         
         <div>
           <div class="hero-title-container" id="animated-title-box">
-            <div class="bracket left" id="hero-bracket-left"></div>
             <h1 class="landing-h1">
-              <span id="hero-word-1" class="word-focus-transition">Chem</span><span id="hero-word-2" class="word-focus-transition">Core</span>
+              <span class="hero-word-wrapper" id="wrapper-1">
+                <span id="hero-word-1" class="word-focus-transition">Chem</span>
+                <div class="scan-line hero-scan"></div>
+              </span>
+              <span class="hero-word-wrapper" id="wrapper-2">
+                <span id="hero-word-2" class="word-focus-transition">Core</span>
+                <div class="scan-line hero-scan"></div>
+              </span>
             </h1>
-            <div class="scan-line hero-scan"></div>
+            <div class="bracket left" id="hero-bracket-left"></div>
             <div class="bracket right" id="hero-bracket-right"></div>
           </div>
         </div>
@@ -321,6 +327,8 @@
         const cRect = container.getBoundingClientRect();
         const w1Rect = w1.getBoundingClientRect();
         const w2Rect = w2.getBoundingClientRect();
+        const wrap1 = document.getElementById('wrapper-1');
+        const wrap2 = document.getElementById('wrapper-2');
 
         if (bracketState === 0) {
           // Enclose 'Chem'
@@ -331,6 +339,8 @@
           bRight.style.transform = `translate(${diffX}px, -50%)`;
           w1.classList.remove('blur-text');
           w2.classList.add('blur-text');
+          if (wrap1) wrap1.classList.add('focused');
+          if (wrap2) wrap2.classList.remove('focused');
         } else {
           // Enclose 'Core'
           const targetLeft = w2Rect.left - 35;
@@ -340,6 +350,8 @@
           bRight.style.transform = `translateY(-50%)`;
           w1.classList.add('blur-text');
           w2.classList.remove('blur-text');
+          if (wrap1) wrap1.classList.remove('focused');
+          if (wrap2) wrap2.classList.add('focused');
         }
       }
 

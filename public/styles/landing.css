@@ -459,6 +459,12 @@ body.landing-mode .chat-panel {
   padding: 0 10px;
 }
 
+.hero-word-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+}
+
 .hero-scan {
   position: absolute;
   top: 0;
@@ -466,16 +472,19 @@ body.landing-mode .chat-panel {
   width: 3px;
   background: var(--neon-primary);
   box-shadow: 0 0 15px var(--neon-primary), 0 0 30px var(--neon-primary);
-  opacity: 0.8;
+  opacity: 0;
   z-index: 5;
   pointer-events: none;
-  animation: scanning-hero 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.hero-word-wrapper.focused .hero-scan {
+  animation: scanning-hero 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes scanning-hero {
   0%, 100% { left: 0%; opacity: 0; }
-  10%, 90% { opacity: 1; }
-  50% { left: 100%; }
+  15%, 85% { opacity: 1; }
+  50% { left: 100%; opacity: 1; }
 }
 
 .bracket {
