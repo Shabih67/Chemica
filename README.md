@@ -15,6 +15,35 @@
 
 ---
 
+## Deployment
+
+### Deploy to Vercel
+
+1. **Install Vercel CLI**
+```bash
+npm i -g vercel
+```
+
+2. **Login to Vercel**
+```bash
+vercel login
+```
+
+3. **Deploy from project directory**
+```bash
+cd e:\download\mods\chemcore-fullstack\chemcore
+vercel --prod
+```
+
+### Environment Variables
+Add these in Vercel dashboard under Settings → Environment Variables:
+- `OPENAI_API_KEY` (optional)
+- `GEMINI_API_KEY` (optional)
+- `OPENROUTER_API_KEY` (optional)
+- `OPENROUTER_API_KEY_2` (optional)
+
+---
+
 ## Stack
 | Layer | Tech |
 |-------|------|
