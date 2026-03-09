@@ -5,4 +5,4 @@ node_modules/
 dist/
 build/
 server_new.js
-{public,src/
+{public,src}/

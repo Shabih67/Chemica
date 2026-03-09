@@ -456,6 +456,26 @@ body.landing-mode .chat-panel {
   display: inline-block;
   position: relative;
   margin-bottom: 1.5rem;
+  padding: 0 10px;
+}
+
+.hero-scan {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--neon-primary);
+  box-shadow: 0 0 15px var(--neon-primary), 0 0 30px var(--neon-primary);
+  opacity: 0.8;
+  z-index: 5;
+  pointer-events: none;
+  animation: scanning-hero 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scanning-hero {
+  0%, 100% { left: 0%; opacity: 0; }
+  10%, 90% { opacity: 1; }
+  50% { left: 100%; }
 }
 
 .bracket {
