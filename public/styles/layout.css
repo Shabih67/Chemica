@@ -54,18 +54,20 @@
 }
 
 .sidebar-brand-name {
-  font-size: var(--text-base);
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
+  line-height: 1.1;
 }
 
 .sidebar-brand-tag {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
 }
 
 /* Sidebar navigation */
@@ -109,11 +111,18 @@
   text-align: left;
   white-space: nowrap;
   position: relative;
+  overflow: hidden;
+  contain: layout style;
 }
 
 .nav-item:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
+}
+
+.nav-item:active {
+  transform: none !important;
+  font-size: var(--text-sm) !important;
 }
 
 .nav-item.active {
@@ -144,6 +153,7 @@
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nav-badge {
@@ -171,16 +181,23 @@
   padding: 10px 12px;
   font-family: var(--font-main);
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   background: none;
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
 }
 .sidebar-footer-btn:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
+}
+.sidebar-footer-btn:active {
+  transform: none !important;
+  font-size: var(--text-sm) !important;
 }
 
 /* ── Main Content Area ──────────────────────────────────────────── */

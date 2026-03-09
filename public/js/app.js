@@ -73,8 +73,11 @@ function toggleTheme() {
   const isDark = html.getAttribute('data-theme') !== 'light';
   html.setAttribute('data-theme', isDark ? 'light' : 'dark');
   const icon = isDark ? '☀️' : '🌙';
+  const label = isDark ? 'Light Mode' : 'Dark Mode';
   document.getElementById('theme-toggle').textContent = icon;
   document.getElementById('theme-icon-sidebar').textContent = icon;
+  const sidebarLabel = document.querySelector('.sidebar-footer-btn .nav-label');
+  if (sidebarLabel) sidebarLabel.textContent = label;
   localStorage.setItem('chemcore-theme', isDark ? 'light' : 'dark');
 }
 
@@ -83,8 +86,11 @@ function loadSavedTheme() {
   if (saved) {
     document.documentElement.setAttribute('data-theme', saved);
     const icon = saved === 'light' ? '☀️' : '🌙';
+    const label = saved === 'light' ? 'Light Mode' : 'Dark Mode';
     document.getElementById('theme-toggle').textContent = icon;
     document.getElementById('theme-icon-sidebar').textContent = icon;
+    const sidebarLabel = document.querySelector('.sidebar-footer-btn .nav-label');
+    if (sidebarLabel) sidebarLabel.textContent = label;
   }
 }
 

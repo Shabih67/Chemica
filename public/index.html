@@ -32,7 +32,7 @@
         <a href="#benefits">Benefits</a>
         <a href="#stats">Stats</a>
       </div>
-      <button class="btn-start" onclick="launchApp()">Launch Platform</button>
+      <button class="btn-start" onclick="openAuthModal()">Launch Platform</button>
     </nav>
 
     <!-- Hero Section -->
@@ -44,8 +44,8 @@
         <div class="hero-badge">⚡ AI-Powered Engineering Intelligence</div>
         
         <div>
-          <div class="hero-title-container" id="animated-title-box">
-            <h1 class="landing-h1">
+          <div class="hero-title-container" id="animated-title-box" style="position: relative;">
+            <h1 class="landing-h1" style="display: flex; gap: 0.15em; justify-content: center;">
               <span class="hero-word-wrapper" id="wrapper-1">
                 <span id="hero-word-1" class="word-focus-transition">Chem</span>
                 <div class="scan-line hero-scan"></div>
@@ -55,8 +55,10 @@
                 <div class="scan-line hero-scan"></div>
               </span>
             </h1>
-            <div class="bracket left" id="hero-bracket-left"></div>
-            <div class="bracket right" id="hero-bracket-right"></div>
+            <div id="focus-bracket-box">
+              <span class="c c1"></span><span class="c c2"></span>
+              <span class="c c3"></span><span class="c c4"></span>
+            </div>
           </div>
         </div>
         
@@ -66,8 +68,8 @@
         </p>
 
         <div class="hero-button-group">
-          <button class="btn-start" onclick="launchApp()">GET STARTED FREE →</button>
-          <button class="btn-start outline" onclick="launchApp()">See How it Works</button>
+          <button class="btn-start" onclick="openAuthModal()">GET STARTED FREE →</button>
+          <button class="btn-start outline" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">See How it Works</button>
         </div>
       </div>
 
@@ -117,8 +119,10 @@
           Smart Insights for Your 
           <span class="typewriter-container">
             <span class="bracket-focus left">[</span>
-            <span id="typewriter-text" class="typewriter-word"></span>
-            <span class="scan-line"></span>
+            <span class="typewriter-word-wrapper">
+              <span id="typewriter-text" class="typewriter-word"></span>
+              <span class="scan-line"></span>
+            </span>
             <span class="bracket-focus right">]</span>
           </span>
           <span class="typewriter-cursor">|</span>
@@ -253,7 +257,7 @@
       <div class="cta-box anim-scroll">
         <h2>Ready to Transform Your Process?</h2>
         <p>Join thousands of chemical engineers already using ChemCore to design better.</p>
-        <button class="btn-start" onclick="launchApp()">LAUNCH DASHBOARD NOW →</button>
+        <button class="btn-start" onclick="openAuthModal()">LAUNCH DASHBOARD NOW →</button>
         <div class="cta-curve"></div>
       </div>
     </section>
@@ -297,7 +301,168 @@
         <div>Built with ♥ for chemical engineers</div>
       </div>
     </footer>
+
+    <!-- Auth Split-Screen Modal -->
+    <div class="auth-modal-overlay" id="auth-modal">
+      <div class="auth-modal-glass">
+        <button class="auth-close" onclick="closeAuthModal()">✕</button>
+        
+        <!-- Left Form Side -->
+        <div class="auth-form-side">
+          <div class="auth-header">
+            <h2>Welcome to ChemCore</h2>
+            <p>Access the ultimate engineering toolkit.</p>
+          </div>
+
+          <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+            <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+          </div>
+          
+          <form id="login-form" class="auth-form active">
+            <label>Email Address</label>
+            <input type="email" placeholder="engineer@example.com">
+            
+            <label>Password</label>
+            <input type="password" placeholder="••••••••">
+            
+            <div class="auth-options">
+              <label><input type="checkbox"> Remember me</label>
+              <a href="#">Forgot password?</a>
+            </div>
+            
+            <button type="button" class="auth-submit" onclick="launchApp()">Sign In</button>
+          </form>
+
+          <form id="signup-form" class="auth-form">
+            <div class="auth-row">
+              <div>
+                <label>First Name</label>
+                <input type="text" placeholder="Jane">
+              </div>
+              <div>
+                <label>Last Name</label>
+                <input type="text" placeholder="Doe">
+              </div>
+            </div>
+            <label>Email Address</label>
+            <input type="email" placeholder="engineer@example.com">
+            
+            <label>Password</label>
+            <input type="password" placeholder="••••••••">
+            
+            <button type="button" class="auth-submit" onclick="launchApp()">Create Account</button>
+          </form>
+
+          <div class="auth-divider"><span>OR</span></div>
+          
+          <div class="auth-social" style="flex-direction: column; width: 100%; gap: 0.8rem;">
+            
+            <!-- Google Identity Services -->
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div style="width: 100%; display: flex; justify-content: center;">
+              <div class="g_id_signin" data-type="standard" data-theme="filled_black" data-size="large" data-width="320" data-text="continue_with" data-shape="rectangular" data-logo_alignment="center"></div>
+            </div>
+
+            <!-- Facebook Login -->
+            <div style="background: #1877f2; border-radius: 4px; overflow: hidden; height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 320px; margin: 0 auto;">
+              <fb:login-button scope="public_profile,email" data-width="320" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></fb:login-button>
+            </div>
+
+            <!-- LinkedIn Login -->
+            <button class="btn-social-auth" style="background: #0a66c2; border-color: #0a66c2; padding: 0; width: 100%; max-width: 320px; margin: 0 auto; height: 40px; border-radius: 4px; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 15px; font-weight: 500;" onclick="window.location.href='https://www.linkedin.com/oauth/v2/authorization?client_id=YOUR_LINKEDIN_CLIENT_ID&response_type=code&redirect_uri=' + encodeURIComponent(window.location.origin + '/dashboard') + '&scope=openid%20profile%20email'">
+              💼 Continue with LinkedIn
+            </button>
+          </div>
+
+          <button class="btn-guest-mode" onclick="launchApp()">Explore Demo as Guest →</button>
+        </div>
+
+        <!-- Right Visual Side -->
+        <div class="auth-visual-side">
+          <div class="auth-visual-content">
+            <h3>Supercharge your process.</h3>
+            <p>Join over 2k+ chemical engineers optimizing their plants with live data and AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Real-World Social Auth Provider SDKs -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+  <script>
+    // Facebook SDK Initializer
+    window.fbAsyncInit = function() {
+      const FB_APP_ID = 'YOUR_FB_APP_ID'; // Replace with your actual App ID
+      
+      if (FB_APP_ID === 'YOUR_FB_APP_ID') {
+        console.warn("Facebook SDK: Using placeholder App ID. Social login will not work until a real App ID is provided.");
+      }
+
+      try {
+        FB.init({
+          appId      : FB_APP_ID,
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v18.0'
+        });
+        console.log("Facebook SDK initialized.");
+        window.FB_INITIALIZED = true;
+      } catch (e) {
+        console.error("Facebook SDK initialization failed:", e);
+      }
+    };
+
+    // Facebook Login Callback
+    function checkLoginState() {
+      if (!window.FB_INITIALIZED) {
+        console.warn("Facebook SDK not yet initialized. Retrying in 500ms...");
+        setTimeout(checkLoginState, 500);
+        return;
+      }
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          launchApp(); // Success redirect
+        }
+      });
+    }
+
+    // Google Identity Services (GIS) Callback
+    function handleCredentialResponse(response) {
+      if (response.credential) {
+        // Here you would verify this JWT token on your backend.
+        console.log("Encoded JWT ID token: " + response.credential);
+        launchApp(); // Success redirect
+      }
+    }
+
+    // Suppress GSI errors when using placeholder client ID
+    window.addEventListener('error', function(e) {
+      if (e.message && e.message.includes('FedCM') && e.message.includes('NetworkError')) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.warn("Google Identity Services: Using placeholder client ID. Sign-in will not work until a real Client ID is provided.");
+        return false;
+      }
+    }, true);
+
+    // Override console.error to suppress GSI logger errors
+    const originalConsoleError = console.error;
+    console.error = function(...args) {
+      const message = args[0];
+      if (typeof message === 'string' && message.includes('[GSI_LOGGER]') && message.includes('FedCM')) {
+        console.warn("Google Identity Services:", ...args.slice(1));
+        return;
+      }
+      originalConsoleError.apply(console, args);
+    };
+  </script>
 
   <script>
     // Initialize Scroll Animations for Landing Page
@@ -314,69 +479,87 @@
         observer.observe(el);
       });
 
-      // Bracket Focus Animation
+      // Monetra-style Focus Animation with sliding brackets
       let bracketState = 0; // 0 = Chem, 1 = Core
-      const bLeft = document.getElementById('hero-bracket-left');
-      const bRight = document.getElementById('hero-bracket-right');
       const w1 = document.getElementById('hero-word-1');
       const w2 = document.getElementById('hero-word-2');
+      const wrap1 = document.getElementById('wrapper-1');
+      const wrap2 = document.getElementById('wrapper-2');
+      const box = document.getElementById('focus-bracket-box');
       const container = document.getElementById('animated-title-box');
       
       function updateBracket() {
-        if (!bLeft || !bRight || !w1 || !w2 || !container) return;
+        if (!w1 || !w2 || !box || !container) return;
         const cRect = container.getBoundingClientRect();
-        const w1Rect = w1.getBoundingClientRect();
-        const w2Rect = w2.getBoundingClientRect();
-        const wrap1 = document.getElementById('wrapper-1');
-        const wrap2 = document.getElementById('wrapper-2');
+        let targetWord;
 
         if (bracketState === 0) {
-          // Enclose 'Chem'
-          const targetRight = w1Rect.right + 10;
-          const currentRight = cRect.right + 15;
-          const diffX = targetRight - currentRight;
-          bLeft.style.transform = `translateY(-50%)`;
-          bRight.style.transform = `translate(${diffX}px, -50%)`;
-          w1.classList.remove('blur-text');
-          w2.classList.add('blur-text');
+          w1.classList.add('focused-word');
+          w1.classList.remove('unfocused-word');
+          w2.classList.add('unfocused-word');
+          w2.classList.remove('focused-word');
           if (wrap1) wrap1.classList.add('focused');
           if (wrap2) wrap2.classList.remove('focused');
+          targetWord = w1;
         } else {
-          // Enclose 'Core'
-          const targetLeft = w2Rect.left - 35;
-          const currentLeft = cRect.left - 40;
-          const diffX = targetLeft - currentLeft;
-          bLeft.style.transform = `translate(${diffX}px, -50%)`;
-          bRight.style.transform = `translateY(-50%)`;
-          w1.classList.add('blur-text');
-          w2.classList.remove('blur-text');
+          w1.classList.add('unfocused-word');
+          w1.classList.remove('focused-word');
+          w2.classList.add('focused-word');
+          w2.classList.remove('unfocused-word');
           if (wrap1) wrap1.classList.remove('focused');
           if (wrap2) wrap2.classList.add('focused');
+          targetWord = w2;
         }
+
+        // Calculate untransformed center and target scaled size to avoid animation jumpiness
+        const finalScale = 1.04;
+        const targetW = targetWord.offsetWidth * finalScale;
+        const targetH = targetWord.offsetHeight * finalScale;
+
+        let node = targetWord;
+        let dx = 0;
+        let dy = 0;
+        // Traverse offset parents up to the container
+        while (node && node !== container && node !== document.body) {
+          dx += node.offsetLeft;
+          dy += node.offsetTop;
+          node = node.offsetParent;
+        }
+
+        const centerX = dx + (targetWord.offsetWidth / 2);
+        const centerY = dy + (targetWord.offsetHeight / 2);
+
+        const paddingX = 20; 
+        const paddingY = 8;
+        
+        const finalBoxWidth = targetW + paddingX;
+        const finalBoxHeight = targetH + paddingY;
+
+        const leftPos = centerX - (finalBoxWidth / 2);
+        const topPos = centerY - (finalBoxHeight / 2);
+        
+        box.style.width = finalBoxWidth + 'px';
+        box.style.height = finalBoxHeight + 'px';
+        box.style.left = leftPos + 'px';
+        box.style.top = topPos + 'px';
       }
 
       // Snap bracket immediately — no CSS transition on first frame
-      bLeft.style.transition = 'none';
-      bRight.style.transition = 'none';
-      w1.style.transition = 'none';
-      w2.style.transition = 'none';
+      if (box) box.style.transition = 'none';
       updateBracket();
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        bLeft.style.transition = '';
-        bRight.style.transition = '';
-        w1.style.transition = '';
-        w2.style.transition = '';
+        if (box) box.style.transition = '';
       }));
 
-      // Loop every 3 seconds
       setInterval(() => {
         bracketState = 1 - bracketState;
         updateBracket();
-      }, 3000);
+      }, 2500);
     });
 
     function launchApp() {
       // Fade out landing
+      closeAuthModal();
       document.body.classList.remove('landing-mode');
       const landing = document.getElementById('landing-page');
       landing.style.opacity = '0';
@@ -388,6 +571,24 @@
         app.style.display = 'flex';
         app.style.animation = 'fadeIn 0.6s ease-out';
       }, 500);
+    }
+
+    function openAuthModal() {
+      document.getElementById('auth-modal').classList.add('active');
+    }
+
+    function closeAuthModal() {
+      document.getElementById('auth-modal').classList.remove('active');
+    }
+
+    function switchAuthTab(tab) {
+      document.getElementById('login-form').classList.remove('active');
+      document.getElementById('signup-form').classList.remove('active');
+      document.getElementById('tab-login').classList.remove('active');
+      document.getElementById('tab-signup').classList.remove('active');
+      
+      document.getElementById(tab + '-form').classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
     }
 
     // Demo Slideshow Controller
@@ -494,7 +695,7 @@
       const ripple = document.createElement('span');
       ripple.className = 'ripple';
       const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height) * 1.5;
+      const size = Math.min(Math.min(rect.width, rect.height) * 1.5, 150);
       
       ripple.style.width = ripple.style.height = `${size}px`;
       ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
