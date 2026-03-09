@@ -75,27 +75,50 @@
 .bracket-focus.left { margin-right: 6px; }
 .bracket-focus.right { margin-left: 6px; }
 
-.scan-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, var(--neon-primary), transparent);
-  box-shadow: 0 0 8px var(--neon-primary);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 5;
-}
-
-.scanning-active .scan-line {
-  animation: scanning 1.5s linear infinite;
-}
 
 @keyframes scanning {
   0% { left: 0; opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.scan-line {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0;
+  width: 3px;
+  background: var(--neon-primary);
+  box-shadow: 
+    0 0 15px var(--neon-primary),
+    0 0 30px var(--neon-primary);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  border-radius: 20px;
+}
+
+.scanning-active .scan-line {
+  animation: scanning 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Add a glowing 'pass' effect behind the line */
+.scanning-active .typewriter-word::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40px;
+  background: linear-gradient(to right, transparent, rgba(0, 255, 128, 0.1), transparent);
+  animation: scanning-glow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes scanning-glow {
+  0% { left: -40px; opacity: 0; }
+  50% { opacity: 1; }
   100% { left: 100%; opacity: 0; }
 }
 
