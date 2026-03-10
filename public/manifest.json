@@ -1,0 +1,97 @@
+{
+  "name": "ChemCore - Chemical Engineering Platform",
+  "short_name": "ChemCore",
+  "description": "The ultimate chemical engineering platform with calculators, knowledge base, properties database, and AI-powered tools for chemical engineers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1013",
+  "theme_color": "#00bcd4",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/images/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "ChemCore Dashboard Desktop View"
+    },
+    {
+      "src": "/images/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ChemCore Dashboard Mobile View"
+    }
+  ],
+  "categories": ["education", "productivity", "utilities"],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your engineering dashboard",
+      "url": "/",
+      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Calculators",
+      "short_name": "Calculators",
+      "description": "Access engineering calculators",
+      "url": "/?page=calculators",
+      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
